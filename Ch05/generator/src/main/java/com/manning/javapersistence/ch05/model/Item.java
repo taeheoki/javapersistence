@@ -24,7 +24,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 public class Item {
@@ -64,4 +64,50 @@ public class Item {
         this.auctionEnd = auctionEnd;
     }
 
+    public static void main(String[] args) {
+        Map<String, List<Map<String, Integer>>> map = new HashMap<>();
+        List<Map<String, Integer>> list = new ArrayList<>();
+        Map<String, Integer> innerMap1 = new HashMap<>();
+        Map<String, Integer> innerMap2 = new HashMap<>();
+        Map<String, Integer> innerMap3 = new HashMap<>();
+
+        innerMap1.put("key1", 1);
+        innerMap1.put("key2", 2);
+        innerMap1.put("key3", 3);
+        innerMap1.put("key4", 4);
+        innerMap1.put("key5", 5);
+        innerMap1.put("key6", 6);
+
+        innerMap2.put("key1", 1);
+        innerMap2.put("key2", 2);
+        innerMap2.put("key3", 3);
+        innerMap2.put("key4", 4);
+        innerMap2.put("key5", 5);
+        innerMap2.put("key6", 6);
+
+        innerMap3.put("key1", 1);
+        innerMap3.put("key2", 2);
+        innerMap3.put("key3", 3);
+        innerMap3.put("key4", 4);
+        innerMap3.put("key5", 5);
+        innerMap3.put("key6", 6);
+
+        list.add(innerMap1);
+        list.add(innerMap2);
+        list.add(innerMap3);
+
+        map.put("key1", list);
+
+        for (String s : map.keySet()) {
+            List<Map<String, Integer>> maps = map.get(s);
+            for (Map<String, Integer> stringIntegerMap : maps) {
+                for (String string : stringIntegerMap.keySet()) {
+                    System.out.println(stringIntegerMap.get(string));
+                }
+            }
+        }
+    }
+    public void Test() {
+
+    }
 }

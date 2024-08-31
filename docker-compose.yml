@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_server
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # root 사용자 비밀번호를 빈 값으로 설정
+      MYSQL_DATABASE: initial_db         # 처음에 생성할 기본 데이터베이스, 나중에 삭제해도 됩니다
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-db:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql_data:
